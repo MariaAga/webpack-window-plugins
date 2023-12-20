@@ -1,0 +1,25 @@
+{
+  "name": "bi-directional",
+  "private": true,
+  "workspaces": [
+    "./core",
+    "./plugin"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "start": "yarn build && yarn serve",
+    "build": "concurrently \"cd core; yarn build\" \"cd plugin; yarn build\"",
+    "serve": "concurrently \"cd core; yarn serve\" \"cd plugin; yarn serve\"",
+    "clean": "concurrently \"cd core; yarn clean\" \"cd plugin; yarn clean\"",
+  },
+  "devDependencies": {
+    "concurrently": "7.6.0",
+    "wait-on": "7.0.1"
+  },
+  "dependencies": {
+    "prettier": "^3.1.1",
+    "@module-federation/utilities": "^1.7.0",
+    "path-browserify": "^1.0.1",
+    "os-browserify": "^0.3.0"
+  }
+}

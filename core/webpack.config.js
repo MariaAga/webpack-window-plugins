@@ -39,6 +39,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       remotes: {
         plugin: 'plugin@http://localhost:3002/remoteEntry.js',
+        plugin2: 'plugin2@http://localhost:3003/remoteEntry2.js'
       },
       exposes: {
         './Button': './src/Button',

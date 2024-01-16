@@ -11,7 +11,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 3002,
+    port: 3003,
   },
   output: {
     publicPath: 'auto',
@@ -38,8 +38,8 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'plugin',
-      filename: 'remoteEntry.js',
+      name: 'plugin2',
+      filename: 'remoteEntry2.js',
       remotes: {
         core: ['core@http://localhost:3001/remoteEntry.js'],
       },

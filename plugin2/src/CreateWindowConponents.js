@@ -4,7 +4,6 @@ import Button from './Button';
 
 export const createWindowConponents = () => {
   window.components =  window.components || {};
-
-  console.log('plugin1');
+  console.log('plugin2');
   window.components = {... window.components , pluginButton: {component: <Button />}};
 }

@@ -8,9 +8,9 @@
   "version": "0.0.0",
   "scripts": {
     "start": "yarn build && yarn serve",
-    "build": "concurrently \"cd core; yarn build\" \"cd plugin; yarn build\"",
-    "serve": "concurrently \"cd core; yarn serve\" \"cd plugin; yarn serve\"",
-    "clean": "concurrently \"cd core; yarn clean\" \"cd plugin; yarn clean\"",
+    "build": "concurrently \"cd core; yarn build\" \"cd plugin; yarn build\" \"cd plugin2; yarn build\"",
+    "serve": "concurrently \"cd core; yarn serve\" \"cd plugin; yarn serve\" \"cd plugin2; yarn serve\"",
+    "clean": "concurrently \"cd core; yarn clean\" \"cd plugin; yarn clean\" \"cd plugin2; yarn clean\""
   },
   "devDependencies": {
     "concurrently": "7.6.0",

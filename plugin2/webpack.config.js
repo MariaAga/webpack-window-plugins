@@ -1,75 +1,73 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
-const path = require('path');
-const deps = require('./package.json').dependencies;
-const webpack = require('webpack');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { ModuleFederationPlugin } = require("webpack").container;
+const path = require("path");
+const deps = require("./package.json").dependencies;
+const webpack = require("webpack");
 
 module.exports = {
-  entry: './src/index',
-  mode: 'development',
+  entry: "./src/index",
+  mode: "development",
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, "dist"),
     },
     port: 3003,
   },
   output: {
-    publicPath: 'auto',
+    publicPath: "auto",
   },
   module: {
     rules: [
       {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              injectType: 'singletonStyleTag',
+              attributes: { id: 'plugin2' },
+              base: 1000,
+            },
+          },
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
         test: /\.js?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/,
         options: {
-          presets: ['@babel/preset-react'],
+          presets: ["@babel/preset-react"],
         },
       },
     ],
   },
-  stats: 'verbose',
-  
+  stats: "verbose",
   resolve: {
     fallback: {
-      path: require.resolve('path-browserify'),
-      os: require.resolve('os-browserify'),
+      path: require.resolve("path-browserify"),
+      os: require.resolve("os-browserify"),
+    },
+    alias: {
+      core: path.join(__dirname, "../core/src"),
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'plugin2',
-      filename: 'remoteEntry2.js',
-      remotes: {
-        core: ['core@http://localhost:3001/remoteEntry.js'],
-      },
+      name: "plugin2",
+      filename: "remoteEntry2.js",
       exposes: {
-        // './Button': './src/Button',
         './globalIndex': './src/globalIndex'
       },
-      shared: [
-        {
-          ...deps,
-          react: {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps.react,
-          },
-          'react-dom': {
-            // eager: true,
-            singleton: true,
-            requiredVersion: deps['react-dom'],
-          },
-        },
-      ],
     }),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-          NODE_ENV: JSON.stringify('development')
-      }
-  })
+      "process.env": {
+        NODE_ENV: JSON.stringify("development"),
+      },
+    }),
   ],
 };

@@ -1,3 +1,3 @@
-import { createWindowConponents} from './CreateWindowConponents';
+import { createWindowConponents } from './CreateWindowConponents';
 
 createWindowConponents();

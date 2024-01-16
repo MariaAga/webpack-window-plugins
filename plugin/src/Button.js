@@ -2,15 +2,10 @@ import React from 'react';
 
 import { ButtonWrapper } from 'core/ButtonWrapper';
 
-const style = {
-  background: '#00c',
-  color: '#fff',
-  padding: 12,
-};
 const Button = () => (
   <div>
     <ButtonWrapper>
-      <button style={style}>Plugin Button</button>
+      <button>Plugin Button</button>
     </ButtonWrapper>
   </div>
 );

@@ -3,7 +3,8 @@
   "private": true,
   "workspaces": [
     "./core",
-    "./plugin"
+    "./plugin",
+    "./plugin2"
   ],
   "version": "0.0.0",
   "scripts": {
@@ -17,9 +18,10 @@
     "wait-on": "7.0.1"
   },
   "dependencies": {
-    "prettier": "^3.1.1",
     "@module-federation/utilities": "^1.7.0",
+    "os-browserify": "^0.3.0",
     "path-browserify": "^1.0.1",
-    "os-browserify": "^0.3.0"
+    "prettier": "^3.1.1",
+    "sass": "^1.69.7"
   }
 }
